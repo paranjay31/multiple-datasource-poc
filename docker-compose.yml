@@ -1,0 +1,26 @@
+version: '3'
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+
+  # PostgreSQL service
+  postgres:
+    image: postgres:latest
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: LibraryHistory
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  dbdata6:
+  postgres-data:
